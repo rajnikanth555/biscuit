@@ -2,27 +2,24 @@ version: 1
 sources:
   #Files or Directories to be Excluded are mentioned in exclusions
   exclusions:
-    - 'test'
-    - 'generated'
-    - 'mock'
-    - 'thirdparty'
-    - 'third-party'
-    - '3rd-party'
-    - '3rdparty'
-    - 'external'
-    - 'build'
-    - 'node_modules'
-    - 'assets'
-    - 'gulp'
-    - 'grunt'
-    - 'library'
-    - '.git'
-    
+    - "test"
+    - "generated"
+    - "mock"
+    - "thirdparty"
+    - "third-party"
+    - "3rd-party"
+    - "3rdparty"
+    - "external"
+    - "build"
+    - "node_modules"
+    - "assets"
+    - "gulp"
+    - "grunt"
+    - "library"
+    - ".git"
+
 # Specify the languages you would like to Scan. Default is all Detected
-languages:
-    -'JAVA'
-
-
+languages: -'JAVA'
 # Define modules one would like to run or disable. This is enough for Basic Users
 # Get List of Modules (Which are Default Enabled/Disabled) at https://docs.embold.io/
 #modules:
@@ -32,5 +29,4 @@ languages:
 #    enabled: false
 #  - name: jshint
 #    enabled: true
-
 
