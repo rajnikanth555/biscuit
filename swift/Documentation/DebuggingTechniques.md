@@ -13,7 +13,7 @@ Type inferrence can be a source of hard-to-debug compiler errors. There are two 
 1. Definition of type inferred variable
 2. Consumption of type inferred variable
 
-In both cases errors are related to incorrect assumptions about type. Such issues are common for ReactiveCocoa applications as it is all about operations over data and related types. The current state of the Swift compiler can cause misleading type errors, especially when error happens in the middle of a signal chain. 
+In both cases errors are related to incorrect assumptions about type. Such issues are common for ReactiveCocoa applications as it is all about operations over data and related types. The current state of the Swift compiler can cause misleading type errors, especially when error happens in the middle of a signal chain.
 
 Below is an example of type-error scenario:
 
@@ -43,7 +43,7 @@ The code above will not compile too, but with the error `error: cannot convert v
 
 #### Debugging event streams
 
-As mentioned in the README, stream debugging can be quite difficut and tedious, so we provide the `logEvents` operator. In its  simplest form:
+As mentioned in the README, stream debugging can be quite difficut and tedious, so we provide the `logEvents` operator. In its simplest form:
 
 ```swift
 let searchString = textField.reactive.continuousTextValues
@@ -51,7 +51,7 @@ let searchString = textField.reactive.continuousTextValues
     .logEvents()
 ```
 
-This will print to the standard output the events. For most use cases, this is enough and will greatly help you understand your flow. 
+This will print to the standard output the events. For most use cases, this is enough and will greatly help you understand your flow.
 The biggest problem with this approach, is that it will continue to ouput in Release mode. This leaves with you with two options:
 
 1. Comment out the operator: `//.logEvents()`. This is the simpleste approach, but it's error prone, since you will eventually forget to do this.
@@ -84,7 +84,7 @@ let searchString = textField.reactive.continuousTextValues
     .logEvents(identifier: "✨My awesome stream ✨")
 ```
 
-There also cases, especially with [hot signals][Signal], when there is simply too much output. For those, you can specify which events you are interested in:
+There also cases, especially with [hot signals][signal], when there is simply too much output. For those, you can specify which events you are interested in:
 
 ```swift
 let searchString = textField.reactive.continuousTextValues
@@ -92,5 +92,4 @@ let searchString = textField.reactive.continuousTextValues
     .logEvents(events: [.disposed])
 ```
 
-[Signal]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Sources/Signal.swift
-
+[signal]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Sources/Signal.swift
