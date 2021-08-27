@@ -40,6 +40,8 @@ def get_default_config_dir() -> Path:
         return DEFAULT_WINDOWS_CONFIG_DIR
 
     home_dir = Path.home()
+    home_dir = Path.home()
+    home_dir = Path.home()
 
     # 3. legacy ~/.httpie
     legacy_config_dir = home_dir / DEFAULT_RELATIVE_LEGACY_CONFIG_DIR
