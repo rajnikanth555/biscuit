@@ -4,21 +4,20 @@ This template deploys a Virtual Machine Scale Set fronted by an Azure Applicatio
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_virtual_machine_scale_set` | The storage account used to host the website |
-| `azurerm_application_gateway` | The storage account used to host the website |
+| Terraform Resource Type             | Description                                        |
+| ----------------------------------- | -------------------------------------------------- |
+| `azurerm_resource_group`            | The resource group all resources are deployed into |
+| `azurerm_virtual_machine_scale_set` | The storage account used to host the website       |
+| `azurerm_application_gateway`       | The storage account used to host the website       |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
+| Name          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `name`        | Name of the deployment                                               |
 | `environment` | The deployment environment name (used for postfixing resource names) |
-| `prefix` | A prefix for globally-unique dns-based resources |
-| `location` | The Azure Region to deploy these resources in |
-
+| `prefix`      | A prefix for globally-unique dns-based resources                     |
+| `location`    | The Azure Region to deploy these resources in                        |
 
 ## Usage
 
@@ -33,4 +32,4 @@ terraform plan \
 terraform apply demo.tfplan
 ```
 
-\* Example shown with [Bash](https://www.gnu.org/software/bash/).  For [Powershell](https://docs.microsoft.com/en-us/powershell/) replace backslashes with backticks.
+\* Example shown with [Bash](https://www.gnu.org/software/bash/). For [Powershell](https://docs.microsoft.com/en-us/powershell/) replace backslashes with backticks.

@@ -2,7 +2,7 @@
 
 This repo contains all currently available Azure Terraform templates contributed by the community.
 
-As of now, this repository should be considered in preview.  As it grows, a set of best-practice guidelines for contributing will be developed and implemented.
+As of now, this repository should be considered in preview. As it grows, a set of best-practice guidelines for contributing will be developed and implemented.
 
 # Contributing
 
@@ -33,11 +33,13 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 - [Azure virtual machine scale set with jumpbox from Packer custom image](./201-vmss-packer-jumpbox)
 
 #### Advanced
+
 - [Azure Service Fabric](./301-service-fabric/)
 - [Azure Service Fabric with APIM](./301-service-fabric-apim/)
 - [Enterprise-ready AKS](./301-aks-enterprise/)
 
 #### Coming Soon
+
 - [Static Website fronted with an SSL CDN](./201-storage-static-website-cdn-ssl)
 - [AKS with GPU node pools](./201-aks-gpu-nodepool/)
 - [Azure Web App on Linux with PostgreSQL and KeyVault](./201-web-app-postgres-keyvault/)

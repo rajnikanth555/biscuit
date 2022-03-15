@@ -1,29 +1,27 @@
 # Containerized Web App with an Azure Container Registry
 
-
 This template deploys an [Azure App Service](https://www.terraform.io/docs/providers/azurerm/r/app_service.html) with a system-assigned identity running Linux configured for a containerized application. This template also deploys an Azure Container Registry and grants read access to the Web App.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_app_service_plan` | The underlying plan that the web app will run on |
-| `azurerm_app_service` | The Linux web app |
-| `azurerm_container_registry` | The Azure Container Registry instance |
-| `azurerm_role_assignment` | The role assignment between the container registry and the app service |
+| Terraform Resource Type      | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| `azurerm_resource_group`     | The resource group all resources are deployed into                     |
+| `azurerm_app_service_plan`   | The underlying plan that the web app will run on                       |
+| `azurerm_app_service`        | The Linux web app                                                      |
+| `azurerm_container_registry` | The Azure Container Registry instance                                  |
+| `azurerm_role_assignment`    | The role assignment between the container registry and the app service |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
+| Name          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `name`        | Name of the deployment                                               |
 | `environment` | The depolyment environment name (used for postfixing resource names) |
-| `dns_prefix` | A prefix for globally-unique dns-based resources |
-| `location` | The Azure Region to deploy these resources in |
-| `plan_tier` | The App Service Plan tier to deploy |
-| `plan_sku` | The App Service Plan SKU to deploy|
-
+| `dns_prefix`  | A prefix for globally-unique dns-based resources                     |
+| `location`    | The Azure Region to deploy these resources in                        |
+| `plan_tier`   | The App Service Plan tier to deploy                                  |
+| `plan_sku`    | The App Service Plan SKU to deploy                                   |
 
 ## Example
 

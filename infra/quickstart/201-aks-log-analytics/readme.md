@@ -1,35 +1,31 @@
 # AKS with Log Analytics
 
-
 This template deploys an [Azure Kubernetes Service](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) instance which sends system and container logs to Azure Log Analytics, which can be visualized with the Container Monitoring solution.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_kubernetes_cluster` |The Azure Kubernetes Serice cluster |
-| `azurerm_log_analytics_workspace` | A workspace to write cluster logs to |
-| `azurerm_log_analytics_solution` | Enables the container monitoring solution for Log ANalytics|
-| `azuread_application` |The application Identity the AKS cluster will use |
-| `random_string` | A random string which will be saved and used with the service principal |
-| `azuread_service_principal` |The service principal the AKS cluster will use |
-| `azuread_service_principal_password` | The password for the Service principal |
-
+| Terraform Resource Type              | Description                                                             |
+| ------------------------------------ | ----------------------------------------------------------------------- |
+| `azurerm_resource_group`             | The resource group all resources are deployed into                      |
+| `azurerm_kubernetes_cluster`         | The Azure Kubernetes Serice cluster                                     |
+| `azurerm_log_analytics_workspace`    | A workspace to write cluster logs to                                    |
+| `azurerm_log_analytics_solution`     | Enables the container monitoring solution for Log ANalytics             |
+| `azuread_application`                | The application Identity the AKS cluster will use                       |
+| `random_string`                      | A random string which will be saved and used with the service principal |
+| `azuread_service_principal`          | The service principal the AKS cluster will use                          |
+| `azuread_service_principal_password` | The password for the Service principal                                  |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| name | Name of the deployment |
+| Name        | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| name        | Name of the deployment                                               |
 | environment | The depolyment environment name (used for postfixing resource names) |
-| prefix | A prefix for globally-unique dns-based resources |
-| location | The Azure Region to deploy these resources in |
-| node_type | The type of node to deploy on (e.g. d1v2) |
-| node_count | The number of nodes to deploy |
-| dns_prefix | A unique dns prefix |
-
-
+| prefix      | A prefix for globally-unique dns-based resources                     |
+| location    | The Azure Region to deploy these resources in                        |
+| node_type   | The type of node to deploy on (e.g. d1v2)                            |
+| node_count  | The number of nodes to deploy                                        |
+| dns_prefix  | A unique dns prefix                                                  |
 
 ## Example
 
