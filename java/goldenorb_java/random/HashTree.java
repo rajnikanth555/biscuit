@@ -158,6 +158,7 @@ public class HashTree implements Serializable, Map<Object, HashTree>, Cloneable 
     public HashTree put(Object key, HashTree value) {
         HashTree previous = data.get(key);
         add(key, value);
+        System.out.println("test");
         return previous;
     }
 
