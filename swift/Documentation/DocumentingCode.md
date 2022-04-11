@@ -7,7 +7,7 @@ Please follow these guidelines when documenting code using [Xcode's markup](http
 ```
 /// DO:
 /// For the sake of the demonstration we will use the lorem ipsum text here.
-/// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper 
+/// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper
 /// tempor dolor a cras amet.
 ///
 /// - returns: Cras a convallis dolor, sed pellentesque mi. Integer suscipit
@@ -19,7 +19,7 @@ Please follow these guidelines when documenting code using [Xcode's markup](http
 /// - returns: Cras a convallis dolor, sed pellentesque mi. Integer suscipit fringilla turpis in bibendum volutpat.
 /// ...
 /// DON'T II
-/// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper 
+/// Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper
 /// tempor dolor a cras amet.
 ///
 /// - returns: Cras a convallis dolor, sed pellentesque mi. Integer suscipit
@@ -139,5 +139,5 @@ init(count: Int)
 ///
 /// DON'T:
 /// - returns:
-///   A signal with mapped value over given function   
+///   A signal with mapped value over given function
 ```

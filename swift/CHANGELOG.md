@@ -12,37 +12,44 @@
 1. The minimum deployment target for iOS has been raised consistently to 9.0 across all integration mediums.
 
 # 11.1.0
+
 # 11.0.01. Binding for `WKInterfaceActivityRing` has been removed, since it causes watchOS builds to be linked with HealthKit, leading to potential App Store rejections for apps who do not use HealthKit. (#3706)
 
-   Users who depend on the `WKInterfaceActivityRing` binding [should consider replicating them in their projects instead](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/10.3.0/ReactiveCocoa/WatchKit/WKInterfaceActivityRing.swift).
+Users who depend on the `WKInterfaceActivityRing` binding [should consider replicating them in their projects instead](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/10.3.0/ReactiveCocoa/WatchKit/WKInterfaceActivityRing.swift).
 
 # 10.3.0
+
 1. Don't include code which uses unavailable classes (like `NSSlider`) when targeting macOS Catalyst (#3698, kudos to @nkristek)
 1. Fixed watchOS build issues. (#3703, kudos to @JaviSoto)
 
 # 10.2.0
+
 1. Update ReactiveSwift to 6.2.
 1. Updated `README.md` to reflect Swift 5.1 compatibility and point snippets to 10.1.0 (#3691, kudos to @Marcocanc)
 1. Support for Swift Package Manager (#3692, #3676 & #3693, kudos to @fabio-cerdeiral-ck, @sharplet and @simba909)
 
 # 10.1.0
+
 1. Update dependencies so ReactiveCocoa can be used with Xcode 11 (#3677, kudos to @olejnjak)
 1. Add a binding target for the `barTintColor` of `UINavigationBar` (#3675, kudos to @rehatkathuria)
 1. Add reactive extensions for standard WatchKit interface objects. (#3670, kudos to @tdimeco)
 1. Fix crashes of `NSObject.signal(for:)` and `NSObject.producer(for:)` with Objective-C enums (#3667, kudos to @gfontenot)
 
 # 10.3.0
+
 # 10.0.0
+
 1. Update ReactiveSwift to 6.0
 1. Remove dependency on antitypical/Result
 
 **Upgrade to master**
 
-* If you have used `Result` only as dependency of `ReactiveSwift`, remove all instances of `import Result`, `import enum Result.NoError` or `import struct Result.AnyError` and remove the `Result` Framework from your project.
-* Replace all cases where `NoError` was used in a `Signal` or `SignalProducer` with `Never`
-* Replace all cases where `AnyError` was used in a `Signal` or `SignalProducer` with `Swift.Error`
+- If you have used `Result` only as dependency of `ReactiveSwift`, remove all instances of `import Result`, `import enum Result.NoError` or `import struct Result.AnyError` and remove the `Result` Framework from your project.
+- Replace all cases where `NoError` was used in a `Signal` or `SignalProducer` with `Never`
+- Replace all cases where `AnyError` was used in a `Signal` or `SignalProducer` with `Swift.Error`
 
 # 9.0.0
+
 1. Make UITextField and UITextView text and attributedText values non-optional. (#3591, kudos to @Marcocanc)
 1. KVO observations can now be made with Smart Key Path in Swift 3.2+, using `producer(for:)` and `signal(for:)` available on `NSObject.reactive`. (#3491, kudos to @andersio)
 1. Fix warnings for deprecated use of Swift's allocate/deallocate methods.
@@ -53,25 +60,30 @@
 1. Add extension for `isHidden` property of `NSView` class. (#3634, kudos to @eimantas)
 
 # 8.0.2
+
 1. ReactiveMapKit has now platform specific build targets and schemes. (#3625, kudos to @andersio)
 
 # 8.0.1
+
 1. Add extensions for several properties on `WKInterfaceLabel` and `WKInterfaceButton`. (#3616, kudos to @yoching)
 1. Add `swift_version` to podspecs (#3622, kudos to @olejnjak)
-1. Introduce Lifetime.of(_:) which retrieves the lifetime of any Objective-C or Swift native object. (#3614, kudos to @ra1028)
+1. Introduce Lifetime.of(\_:) which retrieves the lifetime of any Objective-C or Swift native object. (#3614, kudos to @ra1028)
 1. Fixed an issue of `SignalProducer.take(duringLifetimeOf:)` incorrectly retaining its argument. (#3615, kudos to @andrei-kuzma)
 
 # 8.0.0
+
 1. Add extensions for several properties on `UIBarButtonItem` (#3586, kudos to @asmallteapot).
 
 # 8.0.0-rc.1
+
 1. Add support for Cocoapods 1.5.0 static frameworks (#3590, kudos to @mishagray)
 
 1. Add `becomeFirstResponder` and `resignFirstResponder` extensions to `UIResponder`. (#3585, kudos to @Marcocanc)
-2. Added `title` binding target to `UIViewController` (#3588, kudos to @cocoahero).
-3. Added several trigger signals for view lifecycle events to `UIViewController` (#3588, kudos to @cocoahero).
+1. Added `title` binding target to `UIViewController` (#3588, kudos to @cocoahero).
+1. Added several trigger signals for view lifecycle events to `UIViewController` (#3588, kudos to @cocoahero).
 
 # 7.2.0
+
 1. Fixed a compilation issue related to [SR-7299](https://bugs.swift.org/browse/SR-7299). (#3580)
 
 1. Improved the interoperability of method interception. (#3570, kudos to @andersio)
@@ -85,15 +97,19 @@
 1. Add extension for `search` on MKLocalSearchRequest. (#3571, kudos to @Marcocanc)
 
 # 7.1.0
+
 # 7.1.0-rc.2
+
 1. Fix an issue preventing ReactiveCocoa from being built with the Swift 3.2 language mode. (#3556)
 
 # 7.1.0-rc.1
+
 1. Requires ReactiveSwift 3.1.0 Release Candidate 1. (#3555)
 
 1. Added reactive extension for AppKit's NSTextView. (#3549, kudos to @Palleas)
 
 # 7.0.1
+
 1. Added `tintColor` binding target to `UIView`. (#3542, kudos to @iv-mexx)
 
 1. Fixed `DynamicProperty` for optional properties. (#3548, kudos to @iv-mexx)
@@ -101,11 +117,13 @@
 1. Made `makeBindingTarget` available on Reactive extensions on all objects, not just `NSObject`. (#3545, kudos to @Burgestrand)
 
 # 7.0.0
+
 1. Update ReactiveSwift to 3.0.
 
 1. Added `placeholder` binding target to `UITextField`. (#3536)
 
 # 7.0.0-rc.1
+
 1. UISearchBar has gained more reactive bindings and signals. (#3531, kudos to @andersio)
 
    **Signals:** Search Button Clicked, Bookmark Button Clicked, Results List Clicked, Selected Scope Button Index
@@ -113,11 +131,13 @@
    **Binding Target:** Selected Scope Button Indices.
 
 # 7.0.0-alpha.2
+
 1. Requires ReactiveSwift 3.0.0 alpha 1.
 
 1. ReactiveCocoa is now compatible with the Swift 4.0 language mode, in addition to the Swift 3.2 compatibility mode. (#3526, kudos to @andersio)
 
 # 7.0.0-alpha.1
+
 1. MapKit reactive bindings have been moved to a new **ReactiveMapKit** framework. (#3524)
 
    Sources that use the MapKit bindings are now required to import ReactiveMapKit.
@@ -125,35 +145,46 @@
    For all Xcode project users (including Carthage), targets need to be configured to link against ReactiveMapKit. For CocoaPods users, the framework is offered as a standalone podspec, so the Podfile needs to be updated with a new entry.
 
 # 6.1.0-alpha.2
+
 # 6.1.0-alpha.1
+
 1. Added `cancelButtonClicked` signal to `UISearchBar`.
 1. Subscripting `reactive` with a key path now yields a corresponding `BindingTarget` under Swift 3.2+. (#3489, kudos to @andersio)
 
    Example:
+
    ```swift
    label.reactive[\.text] <~ viewModel.title
    ```
 
 # 6.0.2
+
 1. Disabled code coverage data to allow app submissions with Xcode 9.0 (see https://github.com/Carthage/Carthage/issues/2056, kudos to @NachoSoto)
 
 # 6.0.1
+
 1. [Xcode 9 beta 5] Fixed an issue causing infinite recursion in the Swift runtime. (#3498, kudos to @andersio)
 
 # 6.0.0
+
 # 6.0.0-rc.3
+
 # 6.0.0-rc.2
+
 1. `NSObject` reactive extensions now work in generic environments that are limited to `NSObjectProtocol`. (#3484, kudos to @nickdomenicali)
 
 1. New reactive extension for `UIScrollView`: `scrollsToTop`. (#3481, kudos to @Qata)
 
 # 6.0.0-rc.1
+
 1. `UIButton.reactive.pressed` now reacts to the `primaryActionTriggered` control event, instead of `touchUpInside`, on iOS 9.0+ and tvOS 9.0+. (#3480, kudos to @andrei-kuzma)
 
 1. New reactive extension: `UITextField.reactive.selectedRangeValues`. (#3479, kudos to @Igor-Palaguta)
 
 # 6.0.0-alpha.1
+
 # 5.0.4
+
 1. UITextField text signals now react to `editingDidEndOnExit`. (#3474)
 
 1. Introduce `mapControlEvents(_:_:)` which is set to replace `controlEvents(_:_:)` in most cases. (#3472)
@@ -168,6 +199,7 @@
 # 5.0
 
 ### Table of Contents
+
 1. [Repository Split](#repository-split)
 1. [Swift 3.0 API Renaming](#swift-30-api-renaming)
 1. [New in 5.0: Cocoa Extensions](#new-in-50-cocoa-extensions)
@@ -175,6 +207,7 @@
 1. [Migrating from the ReactiveObjC API](#migrating-from-the-reactiveobjc-api)
 
 ### Repository Split
+
 In version 5.0, we split ReactiveCocoa into multiple repositories for reasons explained in the sections below. The following should help you get started with choosing the repositories you require:
 
 **If you’re using only the Swift APIs**, you can continue to include ReactiveCocoa. You will also need to link against [ReactiveSwift][], which is now a dependency of ReactiveCocoa.
@@ -186,34 +219,38 @@ In version 5.0, we split ReactiveCocoa into multiple repositories for reasons ex
 **Attention:** If you're using ReactiveCocoa, you'll most likely need to import ReactiveSwift as well when using classes or operators that are implemented in ReactiveSwift.
 
 #### ReactiveCocoa
+
 The ReactiveCocoa library is newly focused on Swift and the UI layers of Apple’s platforms, building on the work of [Rex](https://github.com/neilpa/Rex).
 
 Reactive programming provides significant benefit in UI programming. RAC 3 and 4 focused on building out the new core Swift API. But we feel that those APIs have matured and it’s time for RAC-friendly extensions to AppKit and UIKit.
 
 #### ReactiveSwift
+
 The core, platform-independent Swift APIs have been extracted to a new framework, [ReactiveSwift][].
 
 As Swift continues to grow as a language and a platform, we hope that it will expand beyond Cocoa and Apple’s platforms. Separating the Swift code makes it possible to use the reactive paradigm on other platforms.
 
-[ReactiveSwift]: https://github.com/ReactiveCocoa/ReactiveSwift
+[reactiveswift]: https://github.com/ReactiveCocoa/ReactiveSwift
 
 #### ReactiveObjC
+
 The 3.x and 4.x releases of ReactiveCocoa included the Objective-C code from ReactiveCocoa 2.x. That code has been moved to [ReactiveObjC][] because:
 
- 1. It’s independent of the Swift code
- 2. It has a separate user base
- 3. It has a separate group of maintainers
+1.  It’s independent of the Swift code
+2.  It has a separate user base
+3.  It has a separate group of maintainers
 
 We hope that this move will enable continued support of ReactiveObjC.
 
-[ReactiveObjC]: https://github.com/ReactiveCocoa/ReactiveObjC
+[reactiveobjc]: https://github.com/ReactiveCocoa/ReactiveObjC
 
 #### ReactiveObjCBridge
+
 Moving the Swift and Objective-C APIs to separate repositories meant that a new home was needed for the bridging layer between the two.
 
 This bridge is an important tool for users that are working in mixed-language code bases. Whether you are slowly adding Swift to a mature product built with the ReactiveCocoa Objective-C APIs, or looking to adopt ReactiveCocoa in a mixed code base, the bridge is required to communicate between Swift and Objective-C code.
 
-[ReactiveObjCBridge]: https://github.com/ReactiveCocoa/ReactiveObjCBridge
+[reactiveobjcbridge]: https://github.com/ReactiveCocoa/ReactiveObjCBridge
 
 ### Swift 3.0 API Renaming
 
@@ -231,40 +268,40 @@ RAC 5.0 includes a few object interception tools from ReactiveObjC, remastered f
 
 1. **Method Call Interception**
 
-	Create signals that are sourced by intercepting Objective-C objects.
+   Create signals that are sourced by intercepting Objective-C objects.
 
-	```swift
-	// Notify after every time `viewWillAppear(_:)` is called.
-	let appearing = viewController.reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
-	```
+   ```swift
+   // Notify after every time `viewWillAppear(_:)` is called.
+   let appearing = viewController.reactive.trigger(for: #selector(UIViewController.viewWillAppear(_:)))
+   ```
 
 1. **Object Lifetime**
 
-	Obtain a `Lifetime` token for any `NSObject` to observe their deinitialization.
+   Obtain a `Lifetime` token for any `NSObject` to observe their deinitialization.
 
-	```swift
-	// Observe the lifetime of `object`.
-	object.reactive.lifetime.ended.observeCompleted(doCleanup)
-	```
+   ```swift
+   // Observe the lifetime of `object`.
+   object.reactive.lifetime.ended.observeCompleted(doCleanup)
+   ```
 
 1. **Expressive, Safe Key Path Observation**
 
-	Establish key-value observations in the form of [`SignalProducer`][]s and
-	strong-typed `DynamicProperty`s, and enjoy the inherited composability.
+   Establish key-value observations in the form of [`SignalProducer`][]s and
+   strong-typed `DynamicProperty`s, and enjoy the inherited composability.
 
-	```swift
-	// A producer that sends the current value of `keyPath`, followed by
-	// subsequent changes.
-	//
-	// Terminate the KVO observation if the lifetime of `self` ends.
-	let producer = object.reactive.values(forKeyPath: #keyPath(key))
-		.take(during: self.reactive.lifetime)
+   ```swift
+   // A producer that sends the current value of `keyPath`, followed by
+   // subsequent changes.
+   //
+   // Terminate the KVO observation if the lifetime of `self` ends.
+   let producer = object.reactive.values(forKeyPath: #keyPath(key))
+   	.take(during: self.reactive.lifetime)
 
-	// A parameterized property that represents the supplied key path of the
-	// wrapped object. It holds a weak reference to the wrapped object.
-	let property = DynamicProperty<String>(object: person,
-	                                       keyPath: #keyPath(person.name))
-	```
+   // A parameterized property that represents the supplied key path of the
+   // wrapped object. It holds a weak reference to the wrapped object.
+   let property = DynamicProperty<String>(object: person,
+                                          keyPath: #keyPath(person.name))
+   ```
 
 These are accessible via the `reactive` magic property that is available on any ObjC objects.
 
@@ -274,34 +311,33 @@ UI components now expose a collection of binding targets to which can be bound f
 
 1. **UI Bindings**
 
-	UI components exposes [`BindingTarget`][]s, which accept bindings from any
-	kind of streams of values via the `<~` operator.
+   UI components exposes [`BindingTarget`][]s, which accept bindings from any
+   kind of streams of values via the `<~` operator.
 
-	```swift
-	// Bind the `name` property of `person` to the text value of an `UILabel`.
-	nameLabel.reactive.text <~ person.name
-	```
+   ```swift
+   // Bind the `name` property of `person` to the text value of an `UILabel`.
+   nameLabel.reactive.text <~ person.name
+   ```
 
 1. **Controls and User Interactions**
 
-	Interactive UI components expose [`Signal`][]s for control events
-	and updates in the control value upon user interactions.
+   Interactive UI components expose [`Signal`][]s for control events
+   and updates in the control value upon user interactions.
 
-	A selected set of controls provide a convenience, expressive binding
-	API for [`Action`][]s.
+   A selected set of controls provide a convenience, expressive binding
+   API for [`Action`][]s.
 
+   ```swift
+   // Update `allowsCookies` whenever the toggle is flipped.
+   preferences.allowsCookies <~ toggle.reactive.isOnValues
 
-	```swift
-	// Update `allowsCookies` whenever the toggle is flipped.
-	preferences.allowsCookies <~ toggle.reactive.isOnValues
+   // Compute live character counts from the continuous stream of user initiated
+   // changes in the text.
+   textField.reactive.continuousTextValues.map { $0.characters.count }
 
-	// Compute live character counts from the continuous stream of user initiated
-	// changes in the text.
-	textField.reactive.continuousTextValues.map { $0.characters.count }
-
-	// Trigger `commit` whenever the button is pressed.
-	button.reactive.pressed = CocoaAction(viewModel.commit)
-	```
+   // Trigger `commit` whenever the button is pressed.
+   button.reactive.pressed = CocoaAction(viewModel.commit)
+   ```
 
 These are accessible via the `reactive` magic property that is available on any ObjC objects.
 
@@ -312,12 +348,15 @@ These are accessible via the `reactive` magic property that is available on any 
 Prior to RAC 5.0, `Signal`s lived and continued to emit values (and side effects) until they completed. This was very confusing, even for RAC veterans. So [changes have been made](https://github.com/ReactiveCocoa/ReactiveCocoa/pull/2959) to the lifetime semantics. `Signal`s now live and continue to emit events only while either (a) they have observers or (b) they are retained. This clears up a number of unexpected cases and makes `Signal`s much less dangerous.
 
 #### SignalProducer: `buffer` has been removed.
+
 Consider using `Signal.pipe` for `buffer(0)`, `MutableProperty` for `buffer(1)` or `replayLazily(upTo: n)` for `buffer(n)`.
 
 #### Properties: Composition
+
 Properties are now composable! They have many of the same operators as `Signal` and `SignalProducer`: `map`, `filter`, `combineLatest`, `zip`, `flatten`, etc.
 
 #### Properties: Lifetime Semantics
+
 Composed properties, including those created via `Property(initial:then:)`, are semantically a view to their ultimate sources. In other words, the lifetime, the signal and the producer would respect the ultimate sources, and deinitialization of an instance of composed property would not have an effect on these.
 
 ```swift
@@ -375,6 +414,7 @@ public final class MyController {
 ### Migrating from the ReactiveObjC API
 
 #### Primitives
+
 <table>
 	<thead>
 	<tr>
@@ -403,6 +443,7 @@ public final class MyController {
 </table>
 
 #### Macros
+
 <table>
 	<thead>
 	<tr>
@@ -494,7 +535,6 @@ Just like in `RAC 3`, because Objective-C is still in widespread use, 99% of `RA
 
 `ReactiveCocoa 4.0` targets **Xcode 7.2.x** and **Swift 2.1.x**, and it supports `iOS 8.0`, `watchOS 2.0`, `tvOS 9.0` and `OS X 10.9`.
 
-
 #### Signal operators are protocol extensions
 
 The biggest change from `RAC 3` to `RAC 4` is that `Signal` and `SignalProducer` operators are implemented as **protocol extensions** instead of global functions. This is similar to many of the collection protocol changes in the `Swift 2` standard
@@ -558,20 +598,19 @@ only affecting generic, custom signal/producer extensions.
 
 There were some `Signal` operators that were missing `SignalProducer` equivalents:
 
-* `takeUntil`
-* `combineLatestWith`
-* `sampleOn`
-* `takeUntilReplacement`
-* `zipWith`
+- `takeUntil`
+- `combineLatestWith`
+- `sampleOn`
+- `takeUntilReplacement`
+- `zipWith`
 
 #### Added new operators:
 
-* `Signal.on`.
-* `Signal.merge(signals:)`.
-* `Signal.empty`.
-* `skipUntil`.
-* `replayLazily` ([#2639](https://github.com/ReactiveCocoa/ReactiveCocoa/issues/2639)).
-
+- `Signal.on`.
+- `Signal.merge(signals:)`.
+- `Signal.empty`.
+- `skipUntil`.
+- `replayLazily` ([#2639](https://github.com/ReactiveCocoa/ReactiveCocoa/issues/2639)).
 
 #### Renamed `PropertyOf<T>` to `AnyProperty<T>`
 
@@ -596,7 +635,6 @@ It’s still recommended to use `SignalProducer.buffer` or `PropertyType` when b
 
 The full semantics of the operator are documented in the code, and you can see [#2639](https://github.com/ReactiveCocoa/ReactiveCocoa/issues/2639) for full details.
 
-
 # 3.0
 
 ReactiveCocoa 3.0 includes the first official Swift API, which is intended to
@@ -613,25 +651,25 @@ request](https://github.com/ReactiveCocoa/ReactiveCocoa/pull/1382).
 
 **[Additions](#additions)**
 
- 1. [Parameterized types](#parameterized-types)
- 1. [Interrupted event](#interrupted-event)
- 1. [Objective-C bridging](#objective-c-bridging)
+1.  [Parameterized types](#parameterized-types)
+1.  [Interrupted event](#interrupted-event)
+1.  [Objective-C bridging](#objective-c-bridging)
 
 **[Replacements](#replacements)**
 
- 1. [Hot signals are now Signals](#hot-signals-are-now-signals)
- 1. [Cold signals are now SignalProducers](#cold-signals-are-now-signalproducers)
- 1. [Commands are now Actions](#commands-are-now-actions)
- 1. [Flattening/merging, concatenating, and switching are now one operator](#flatteningmerging-concatenating-and-switching-are-now-one-operator)
- 1. [Using PropertyType instead of RACObserve and RAC](#using-propertytype-instead-of-racobserve-and-rac)
- 1. [Using Signal.pipe instead of RACSubject](#using-signalpipe-instead-of-racsubject)
- 1. [Using SignalProducer.buffer instead of replaying](#using-signalproducerbuffer-instead-of-replaying)
- 1. [Using startWithSignal instead of multicasting](#using-startwithsignal-instead-of-multicasting)
+1.  [Hot signals are now Signals](#hot-signals-are-now-signals)
+1.  [Cold signals are now SignalProducers](#cold-signals-are-now-signalproducers)
+1.  [Commands are now Actions](#commands-are-now-actions)
+1.  [Flattening/merging, concatenating, and switching are now one operator](#flatteningmerging-concatenating-and-switching-are-now-one-operator)
+1.  [Using PropertyType instead of RACObserve and RAC](#using-propertytype-instead-of-racobserve-and-rac)
+1.  [Using Signal.pipe instead of RACSubject](#using-signalpipe-instead-of-racsubject)
+1.  [Using SignalProducer.buffer instead of replaying](#using-signalproducerbuffer-instead-of-replaying)
+1.  [Using startWithSignal instead of multicasting](#using-startwithsignal-instead-of-multicasting)
 
 **[Minor changes](#minor-changes)**
 
- 1. [Disposable changes](#disposable-changes)
- 1. [Scheduler changes](#scheduler-changes)
+1.  [Disposable changes](#disposable-changes)
+1.  [Scheduler changes](#scheduler-changes)
 
 ## Additions
 
@@ -689,15 +727,15 @@ translate the concepts between the two APIs (and languages).
 
 **Common conversions include:**
 
-* The `RACSignal.toSignalProducer` method **†**
-    * Converts `RACSignal *` to `SignalProducer<AnyObject?, NSError>`
-* The `toRACSignal()` function
-    * Converts `SignalProducer<AnyObject?, ErrorType>` to `RACSignal *`
-    * Converts `Signal<AnyObject?, ErrorType>` to `RACSignal *`
-* The `RACCommand.toAction` method **‡**
-    * Converts `RACCommand *` to `Action<AnyObject?, AnyObject?, NSError>`
-* The `toRACCommand` function **‡**
-    * Converts `Action<AnyObject?, AnyObject?, ErrorType>` to `RACCommand *`
+- The `RACSignal.toSignalProducer` method **†**
+  - Converts `RACSignal *` to `SignalProducer<AnyObject?, NSError>`
+- The `toRACSignal()` function
+  - Converts `SignalProducer<AnyObject?, ErrorType>` to `RACSignal *`
+  - Converts `Signal<AnyObject?, ErrorType>` to `RACSignal *`
+- The `RACCommand.toAction` method **‡**
+  - Converts `RACCommand *` to `Action<AnyObject?, AnyObject?, NSError>`
+- The `toRACCommand` function **‡**
+  - Converts `Action<AnyObject?, AnyObject?, ErrorType>` to `RACCommand *`
 
 **†** It is not possible (in the general case) to convert arbitrary `RACSignal`
 instances to `Signal`s, because any `RACSignal` subscription could potentially
@@ -768,12 +806,12 @@ error, and clarifies intention.
 
 Actions are also intended to be simpler overall than their predecessor:
 
- * **Unlike commands, actions are not bound to or dependent upon the main
-   thread**, making it easier to reason about when they can be executed and when
-   they will generate notifications.
- * **Actions also only support serial execution**, because concurrent execution
-   was a rarely used feature of `RACCommand` that added significant complexity
-   to the interface and implementation.
+- **Unlike commands, actions are not bound to or dependent upon the main
+  thread**, making it easier to reason about when they can be executed and when
+  they will generate notifications.
+- **Actions also only support serial execution**, because concurrent execution
+  was a rarely used feature of `RACCommand` that added significant complexity
+  to the interface and implementation.
 
 Because actions are frequently used in conjunction with AppKit or UIKit, there
 is also a `CocoaAction` class that erases the type parameters of an `Action`,
@@ -791,12 +829,12 @@ self.button.addTarget(self.cocoaAction, action: CocoaAction.selector, forControl
 RAC 2 offers several operators for transforming a signal-of-signals into one
 `RACSignal`, including:
 
- * `-flatten`
- * `-flattenMap:`
- * `+merge:`
- * `-concat`
- * `+concat:`
- * `-switchToLatest`
+- `-flatten`
+- `-flattenMap:`
+- `+merge:`
+- `-concat`
+- `+concat:`
+- `-switchToLatest`
 
 Because `-flattenMap:` is the easiest to use, it was often
 incorrectly chosen even when concatenation or switching semantics are more
@@ -807,9 +845,9 @@ Note that these do _not_ have the same behavior as `-flatten` and `-flattenMap:`
 from RAC 2. Instead, both accept a “strategy” which determines how the
 producer-of-producers should be integrated, which can be one of:
 
- * `.Merge`, which is equivalent to RAC 2’s `-flatten` or `+merge:`
- * `.Concat`, which is equivalent to `-concat` or `+concat:`
- * `.Latest`, which is equivalent to `-switchToLatest`
+- `.Merge`, which is equivalent to RAC 2’s `-flatten` or `+merge:`
+- `.Concat`, which is equivalent to `-concat` or `+concat:`
+- `.Latest`, which is equivalent to `-switchToLatest`
 
 This reduces the API surface area, and forces callers to consciously think about
 which strategy is most appropriate for a given use.
@@ -942,7 +980,7 @@ replacing RAC 2’s `-performOnMainThread` operator—while
 `QueueScheduler.mainQueueScheduler` will always enqueue work after the current
 run loop iteration, and can be used to schedule work at a future date.
 
-[`Signal`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signals
-[`SignalProducer`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signal-producers
-[`Action`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#actions
-[`BindingTarget`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#binding-target
+[`signal`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signals
+[`signalproducer`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#signal-producers
+[`action`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#actions
+[`bindingtarget`]: https://github.com/ReactiveCocoa/ReactiveSwift/blob/master/Documentation/FrameworkOverview.md#binding-target
