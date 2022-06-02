@@ -138,3 +138,6 @@ class Config(BaseConfigDict):
     @property
     def default_options(self) -> list:
         return self["default_options"]
+       @property
+    def default_options1(self) -> list:
+        return self["default_options"]
