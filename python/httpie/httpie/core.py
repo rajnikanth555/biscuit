@@ -10,24 +10,23 @@ from requests import __version__ as requests_version
 
 from httpie import __version__ as httpie_version
 from httpie.cli.constants import (
-    OUT_REQ_BODY, OUT_REQ_HEAD, OUT_RESP_BODY,
+    OUT_REQ_BODY,
+    OUT_REQ_HEAD,
+    OUT_RESP_BODY,
     OUT_RESP_HEAD,
 )
 from httpie.client import collect_messages
 from httpie.context import Environment
 from httpie.downloads import Downloader
-from httpie.output.writer import (
-    write_message,
-    write_stream,
-)
+from httpie.output.writer import write_message, write_stream
 from httpie.plugins.registry import plugin_manager
 from httpie.status import ExitStatus, http_status_to_exit_status
 
 
 # noinspection PyDefaultArgument
 def main(
-    args: List[Union[str, bytes]] = sys.argv,
-    env=Environment(),
+        args: List[Union[str, bytes]] = sys.argv,
+        env=Environment(),
 ) -> ExitStatus:
     """
     The main function.
@@ -48,12 +47,12 @@ def main(
     if env.config.default_options:
         args = env.config.default_options + args
 
-    include_debug_info = '--debug' in args
-    include_traceback = include_debug_info or '--traceback' in args
+    include_debug_info = "--debug" in args
+    include_traceback = include_debug_info or "--traceback" in args
 
     if include_debug_info:
         print_debug_info(env)
-        if args == ['--debug']:
+        if args == ["--debug"]:
             return ExitStatus.SUCCESS
 
     exit_status = ExitStatus.SUCCESS
@@ -64,13 +63,13 @@ def main(
             env=env,
         )
     except KeyboardInterrupt:
-        env.stderr.write('\n')
+        env.stderr.write("\n")
         if include_traceback:
             raise
         exit_status = ExitStatus.ERROR_CTRL_C
     except SystemExit as e:
         if e.code != ExitStatus.SUCCESS:
-            env.stderr.write('\n')
+            env.stderr.write("\n")
             if include_traceback:
                 raise
             exit_status = ExitStatus.ERROR
@@ -81,36 +80,32 @@ def main(
                 env=env,
             )
         except KeyboardInterrupt:
-            env.stderr.write('\n')
+            env.stderr.write("\n")
             if include_traceback:
                 raise
             exit_status = ExitStatus.ERROR_CTRL_C
         except SystemExit as e:
             if e.code != ExitStatus.SUCCESS:
-                env.stderr.write('\n')
+                env.stderr.write("\n")
                 if include_traceback:
                     raise
                 exit_status = ExitStatus.ERROR
         except requests.Timeout:
             exit_status = ExitStatus.ERROR_TIMEOUT
-            env.log_error(f'Request timed out ({parsed_args.timeout}s).')
+            env.log_error(f"Request timed out ({parsed_args.timeout}s).")
         except requests.TooManyRedirects:
             exit_status = ExitStatus.ERROR_TOO_MANY_REDIRECTS
-            env.log_error(
-                f'Too many redirects'
-                f' (--max-redirects={parsed_args.max_redirects}).'
-            )
+            env.log_error(f"Too many redirects"
+                          f" (--max-redirects={parsed_args.max_redirects}).")
         except Exception as e:
             # TODO: Further distinction between expected and unexpected errors.
             msg = str(e)
-            if hasattr(e, 'request'):
+            if hasattr(e, "request"):
                 request = e.request
-                if hasattr(request, 'url'):
-                    msg = (
-                        f'{msg} while doing a {request.method}'
-                        f' request to URL: {request.url}'
-                    )
-            env.log_error(f'{type(e).__name__}: {msg}')
+                if hasattr(request, "url"):
+                    msg = (f"{msg} while doing a {request.method}"
+                           f" request to URL: {request.url}")
+            env.log_error(f"{type(e).__name__}: {msg}")
             if include_traceback:
                 raise
             exit_status = ExitStatus.ERROR
@@ -120,7 +115,7 @@ def main(
 
 def get_output_options(
     args: argparse.Namespace,
-    message: Union[requests.PreparedRequest, requests.Response]
+    message: Union[requests.PreparedRequest, requests.Response],
 ) -> Tuple[bool, bool]:
     return {
         requests.PreparedRequest: (
@@ -136,7 +131,7 @@ def get_output_options(
 
 def get_output_options1(
     args: argparse.Namespace,
-    message: Union[requests.PreparedRequest, requests.Response]
+    message: Union[requests.PreparedRequest, requests.Response],
 ) -> Tuple[bool, bool]:
     return {
         requests.PreparedRequest: (
@@ -148,6 +143,8 @@ def get_output_options1(
             OUT_RESP_BODY in args.output_options,
         ),
     }[type(message)]
+
+
 def program(
     args: argparse.Namespace,
     env: Environment,
@@ -165,7 +162,7 @@ def program(
             downloader = Downloader(
                 output_file=args.output_file,
                 progress_file=env.stderr,
-                resume=args.download_resume
+                resume=args.download_resume,
             )
             downloader.pre_request(args.headers)
 
@@ -175,7 +172,7 @@ def program(
             nonlocal needs_separator
             if env.stdout_isatty and needs_separator:
                 needs_separator = False
-                getattr(env.stdout, 'buffer', env.stdout).write(b'\n\n')
+                getattr(env.stdout, "buffer", env.stdout).write(b"\n\n")
 
         initial_request: Optional[requests.PreparedRequest] = None
         final_response: Optional[requests.Response] = None
@@ -187,8 +184,7 @@ def program(
                 # & not `.read()` already pre-request (e.g., for  compression)
                 and initial_request
                 # & non-EOF chunk
-                and chunk
-            )
+                and chunk)
             if should_pipe_to_stdout:
                 msg = requests.PreparedRequest()
                 msg.is_body_upload_chunk = True
@@ -199,19 +195,19 @@ def program(
                     env=env,
                     args=args,
                     with_body=True,
-                    with_headers=False
+                    with_headers=False,
                 )
 
         messages = collect_messages(
             args=args,
             config_dir=env.config.directory,
-            request_body_read_callback=request_body_read_callback
+            request_body_read_callback=request_body_read_callback,
         )
         for message in messages:
             maybe_separate()
             is_request = isinstance(message, requests.PreparedRequest)
-            with_headers, with_body = get_output_options(
-                args=args, message=message)
+            with_headers, with_body = get_output_options(args=args,
+                                                         message=message)
             if is_request:
                 if not initial_request:
                     initial_request = message
@@ -224,14 +220,11 @@ def program(
                 final_response = message
                 if args.check_status or downloader:
                     exit_status = http_status_to_exit_status(
-                        http_status=message.status_code,
-                        follow=args.follow
-                    )
-                    if (not env.stdout_isatty
-                            and exit_status != ExitStatus.SUCCESS):
+                        http_status=message.status_code, follow=args.follow)
+                    if not env.stdout_isatty and exit_status != ExitStatus.SUCCESS:
                         env.log_error(
-                            f'HTTP {message.raw.status} {message.raw.reason}',
-                            level='warning'
+                            f"HTTP {message.raw.status} {message.raw.reason}",
+                            level="warning",
                         )
             write_message(
                 requests_message=message,
@@ -257,11 +250,9 @@ def program(
             downloader.finish()
             if downloader.interrupted:
                 exit_status = ExitStatus.ERROR
-                env.log_error(
-                    'Incomplete download: size=%d; downloaded=%d' % (
-                        downloader.status.total_size,
-                        downloader.status.downloaded
-                    ))
+                env.log_error("Incomplete download: size=%d; downloaded=%d" %
+                              (downloader.status.total_size,
+                               downloader.status.downloaded))
         return exit_status
 
     finally:
@@ -275,28 +266,25 @@ def program(
 
 def print_debug_info(env: Environment):
     env.stderr.writelines([
-        f'HTTPie {httpie_version}\n',
-        f'Requests {requests_version}\n',
-        f'Pygments {pygments_version}\n',
-        f'Python {sys.version}\n{sys.executable}\n',
-        f'{platform.system()} {platform.release()}',
+        f"HTTPie {httpie_version}\n",
+        f"Requests {requests_version}\n",
+        f"Pygments {pygments_version}\n",
+        f"Python {sys.version}\n{sys.executable}\n",
+        f"{platform.system()} {platform.release()}",
     ])
-    env.stderr.write('\n\n')
+    env.stderr.write("\n\n")
     env.stderr.write(repr(env))
-    env.stderr.write('\n')
+    env.stderr.write("\n")
 
 
-def decode_raw_args(
-    args: List[Union[str, bytes]],
-    stdin_encoding: str
-) -> List[str]:
+def decode_raw_args(args: List[Union[str, bytes]],
+                    stdin_encoding: str) -> List[str]:
     """
     Convert all bytes args to str
     by decoding them using stdin encoding.
 
     """
     return [
-        arg.decode(stdin_encoding)
-        if type(arg) is bytes else arg
+        arg.decode(stdin_encoding) if type(arg) is bytes else arg
         for arg in args
     ]
