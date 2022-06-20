@@ -1,45 +1,44 @@
 # Enterprise Azure Kubernetes Service
 
-This template deploys an Azure Kubernetes Service cluster configured for common enterprise usage.  The AKS Cluster is deployed inside a private network, with all ingress fronted by an Azure Application Gateway with a Web Application Firewall enabled.  an Azure Container Reigstery instance is also deployed, and Managed Identity is leveraged to enable read access to the ACR instance from AKS.
+This template deploys an Azure Kubernetes Service cluster configured for common enterprise usage. The AKS Cluster is deployed inside a private network, with all ingress fronted by an Azure Application Gateway with a Web Application Firewall enabled. an Azure Container Reigstery instance is also deployed, and Managed Identity is leveraged to enable read access to the ACR instance from AKS.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_app_service_plan` | The underlying plan that the web app will run on |
-| `azurerm_app_service` | The Linux web app |
+| Terraform Resource Type    | Description                                        |
+| -------------------------- | -------------------------------------------------- |
+| `azurerm_resource_group`   | The resource group all resources are deployed into |
+| `azurerm_app_service_plan` | The underlying plan that the web app will run on   |
+| `azurerm_app_service`      | The Linux web app                                  |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
-| `environment` | The depolyment environment name (used for postfixing resource names) |
-| `prefix` | A prefix for globally-unique dns-based resources |
-| `location` | The Azure Region to deploy these resources in |
-| `azuread_application` | The Azure AD Application for the cluster |
-| `azuread_service_principal` | The service principal for the AAD App |
-| `azuread_service_principal_password` | The password for the AAD App SP |
-| `azurerm_application_gateway` | The App Gateway that will front all traffic |
-| `azurerm_application_insights` | An App Insights instance to collect application data |
-| `azurerm_kubernetes_cluster` | The AKS Cluster |
-| `azurerm_log_analytics_solution` | Enables the Log Analytics container monitoring solution |
-| `azurerm_log_analytics_workspace` | A Log Analytics workspace to send all AKS telemetry to |
-| `azurerm_network_security_group` | A network security group for AKS pods |
-| `azurerm_network_security_group` | A network security group for our App Gateway |
-| `azurerm_network_security_group` | A network security group for ingress services |
-| `azurerm_public_ip` | A public IP for the App Gateway |
-| `azurerm_role_assignment` | Assigns rights for AKS to be able to modify the networks |
-| `azurerm_subnet` | A subnet for AKS Pods |
-| `azurerm_subnet` | A subnet for our App Gateway |
-| `azurerm_subnet` | A subnet for ingress services |
-| `azurerm_virtual_network` | A Virtual network for our cluster |
-| `helm_release` | Installs Ghost blogging software on the AKS cluster as a demo |
-| `helm_release` | Installs nginx ingress on the AKS cluster |
-| `kubernetes_cluster_role_binding` | Permissions for the Helm Timmer accoutn |
-| `kubernetes_service_account` | A Service account for Helm |
-
+| Name                                 | Description                                                          |
+| ------------------------------------ | -------------------------------------------------------------------- |
+| `name`                               | Name of the deployment                                               |
+| `environment`                        | The depolyment environment name (used for postfixing resource names) |
+| `prefix`                             | A prefix for globally-unique dns-based resources                     |
+| `location`                           | The Azure Region to deploy these resources in                        |
+| `azuread_application`                | The Azure AD Application for the cluster                             |
+| `azuread_service_principal`          | The service principal for the AAD App                                |
+| `azuread_service_principal_password` | The password for the AAD App SP                                      |
+| `azurerm_application_gateway`        | The App Gateway that will front all traffic                          |
+| `azurerm_application_insights`       | An App Insights instance to collect application data                 |
+| `azurerm_kubernetes_cluster`         | The AKS Cluster                                                      |
+| `azurerm_log_analytics_solution`     | Enables the Log Analytics container monitoring solution              |
+| `azurerm_log_analytics_workspace`    | A Log Analytics workspace to send all AKS telemetry to               |
+| `azurerm_network_security_group`     | A network security group for AKS pods                                |
+| `azurerm_network_security_group`     | A network security group for our App Gateway                         |
+| `azurerm_network_security_group`     | A network security group for ingress services                        |
+| `azurerm_public_ip`                  | A public IP for the App Gateway                                      |
+| `azurerm_role_assignment`            | Assigns rights for AKS to be able to modify the networks             |
+| `azurerm_subnet`                     | A subnet for AKS Pods                                                |
+| `azurerm_subnet`                     | A subnet for our App Gateway                                         |
+| `azurerm_subnet`                     | A subnet for ingress services                                        |
+| `azurerm_virtual_network`            | A Virtual network for our cluster                                    |
+| `helm_release`                       | Installs Ghost blogging software on the AKS cluster as a demo        |
+| `helm_release`                       | Installs nginx ingress on the AKS cluster                            |
+| `kubernetes_cluster_role_binding`    | Permissions for the Helm Timmer accoutn                              |
+| `kubernetes_service_account`         | A Service account for Helm                                           |
 
 ## Usage
 

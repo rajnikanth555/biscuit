@@ -4,20 +4,20 @@ This template deploys an [Azure Firewall](https://registry.terraform.io/provider
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all the deployed resources.|
-| `azurerm_virtual_network` | The virtual network for the firewall. |
-| `azurerm_subnet` |The firewall subnet.|
-| `azurerm_public_ip` | The firewall public IP address. |
-| `azurerm_firewall` | The standard Azure Firewall. |
-| `azurerm_firewall_application_rule_collection` | The application rule collection. |
-| `azurerm_firewall_network_rule_collection` | The network rule collection. |
+| Terraform Resource Type                        | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- |
+| `azurerm_resource_group`                       | The resource group all the deployed resources. |
+| `azurerm_virtual_network`                      | The virtual network for the firewall.          |
+| `azurerm_subnet`                               | The firewall subnet.                           |
+| `azurerm_public_ip`                            | The firewall public IP address.                |
+| `azurerm_firewall`                             | The standard Azure Firewall.                   |
+| `azurerm_firewall_application_rule_collection` | The application rule collection.               |
+| `azurerm_firewall_network_rule_collection`     | The network rule collection.                   |
 
 ## Variables
 
-| Name | Description |
-|-|-|
+| Name                      | Description             |
+| ------------------------- | ----------------------- |
 | `resource_group_location` | Resource group location |
 
 ## Example

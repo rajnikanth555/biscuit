@@ -1,33 +1,29 @@
 # AKS with an Admin Dashboard
 
-
-This template deploys an [Azure Kubernetes Service](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) instance with Role Based Access Control (RBAC) enabled. With this, by default the robust Kubernetes dashboard has no rights to view or make changes to the cluster. In this template we leverage the Kubernetes provider to provision a role binding for the Dashboard accoutn to give it `cluster-admin` rights - something we shoudl not do in production but can be very useful in development. 
+This template deploys an [Azure Kubernetes Service](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html) instance with Role Based Access Control (RBAC) enabled. With this, by default the robust Kubernetes dashboard has no rights to view or make changes to the cluster. In this template we leverage the Kubernetes provider to provision a role binding for the Dashboard accoutn to give it `cluster-admin` rights - something we shoudl not do in production but can be very useful in development.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_kubernetes_cluster` |The Azure Kubernetes Serice cluster |
-| `azuread_application` |The application Identity the AKS cluster will use |
-| `random_string` | A random string which will be saved and used with the service principal |
-| `azuread_service_principal` |The service principal the AKS cluster will use |
-| `azuread_service_principal_password` | The password for the Service principal |
-
+| Terraform Resource Type              | Description                                                             |
+| ------------------------------------ | ----------------------------------------------------------------------- |
+| `azurerm_resource_group`             | The resource group all resources are deployed into                      |
+| `azurerm_kubernetes_cluster`         | The Azure Kubernetes Serice cluster                                     |
+| `azuread_application`                | The application Identity the AKS cluster will use                       |
+| `random_string`                      | A random string which will be saved and used with the service principal |
+| `azuread_service_principal`          | The service principal the AKS cluster will use                          |
+| `azuread_service_principal_password` | The password for the Service principal                                  |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| name | Name of the deployment |
+| Name        | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| name        | Name of the deployment                                               |
 | environment | The depolyment environment name (used for postfixing resource names) |
-| prefix | A prefix for globally-unique dns-based resources |
-| location | The Azure Region to deploy these resources in |
-| node_type | The type of node to deploy on (e.g. d1v2) |
-| node_count | The number of nodes to deploy |
-| dns_prefix | A unique dns prefix |
-
-
+| prefix      | A prefix for globally-unique dns-based resources                     |
+| location    | The Azure Region to deploy these resources in                        |
+| node_type   | The type of node to deploy on (e.g. d1v2)                            |
+| node_count  | The number of nodes to deploy                                        |
+| dns_prefix  | A unique dns prefix                                                  |
 
 ## Example
 

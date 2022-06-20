@@ -1,27 +1,25 @@
 # Linux Web App for a Java/Tomcat application
 
-
 This template deploys an [Azure App Service](https://www.terraform.io/docs/providers/azurerm/r/app_service.html) running Linux configured for a Java application hosted with Tomcat.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_app_service_plan` | The underlying plan that the web app will run on |
-| `azurerm_app_service` | The Linux web app |
+| Terraform Resource Type    | Description                                        |
+| -------------------------- | -------------------------------------------------- |
+| `azurerm_resource_group`   | The resource group all resources are deployed into |
+| `azurerm_app_service_plan` | The underlying plan that the web app will run on   |
+| `azurerm_app_service`      | The Linux web app                                  |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
+| Name          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `name`        | Name of the deployment                                               |
 | `environment` | The depolyment environment name (used for postfixing resource names) |
-| `dns_prefix` | A prefix for globally-unique dns-based resources |
-| `location` | The Azure Region to deploy these resources in |
-| `plan_tier` | The App Service Plan tier to deploy |
-| `plan_sku` | The App Service Plan SKU to deploy|
-
+| `dns_prefix`  | A prefix for globally-unique dns-based resources                     |
+| `location`    | The Azure Region to deploy these resources in                        |
+| `plan_tier`   | The App Service Plan tier to deploy                                  |
+| `plan_sku`    | The App Service Plan SKU to deploy                                   |
 
 ## Example
 

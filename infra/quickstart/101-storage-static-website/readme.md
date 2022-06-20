@@ -4,20 +4,19 @@ This template deploys an [Azure Storage Account](https://www.terraform.io/docs/p
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_storage_account` | The storage account used to host the website |
+| Terraform Resource Type   | Description                                        |
+| ------------------------- | -------------------------------------------------- |
+| `azurerm_resource_group`  | The resource group all resources are deployed into |
+| `azurerm_storage_account` | The storage account used to host the website       |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
+| Name          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `name`        | Name of the deployment                                               |
 | `environment` | The depolyment environment name (used for postfixing resource names) |
-| `dns_prefix` | A prefix for globally-unique dns-based resources |
-| `location` | The Azure Region to deploy these resources in |
-
+| `dns_prefix`  | A prefix for globally-unique dns-based resources                     |
+| `location`    | The Azure Region to deploy these resources in                        |
 
 ## Example
 

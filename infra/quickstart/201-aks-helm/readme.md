@@ -4,16 +4,15 @@ This template deploys an Azure Kubernetes Service cluster then leverages the Kub
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| name | Name of the deployment |
+| Name        | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| name        | Name of the deployment                                               |
 | environment | The depolyment environment name (used for postfixing resource names) |
-| prefix | A prefix for globally-unique dns-based resources |
-| location | The Azure Region to deploy these resources in |
-| node_type | The type of node to deploy on (e.g. d1v2) |
-| node_count | The number of nodes to deploy |
-| dns_prefix | A unique dns prefix |
-
+| prefix      | A prefix for globally-unique dns-based resources                     |
+| location    | The Azure Region to deploy these resources in                        |
+| node_type   | The type of node to deploy on (e.g. d1v2)                            |
+| node_count  | The number of nodes to deploy                                        |
+| dns_prefix  | A unique dns prefix                                                  |
 
 ## Sample
 
@@ -241,4 +240,4 @@ Plan: 9 to add, 0 to change, 0 to destroy.
 ------------------------------------------------------------------------
 ```
 
-\* Example shown with [Bash](https://www.gnu.org/software/bash/).  For [Powershell](https://docs.microsoft.com/en-us/powershell/) replace backslashes with backticks.
+\* Example shown with [Bash](https://www.gnu.org/software/bash/). For [Powershell](https://docs.microsoft.com/en-us/powershell/) replace backslashes with backticks.

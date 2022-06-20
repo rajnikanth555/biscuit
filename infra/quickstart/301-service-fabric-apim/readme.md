@@ -1,54 +1,56 @@
 # Service Fabric with APIM.
 
-This template deploys a fully operational Service Fabric cluster running on Windows Virtual Machines in a private Virtual Network. Azure API Management is deployed as a front end gateway with internal Service Fabric services as the backend. 
+This template deploys a fully operational Service Fabric cluster running on Windows Virtual Machines in a private Virtual Network. Azure API Management is deployed as a front end gateway with internal Service Fabric services as the backend.
 
 ## Resources
 
-| Terraform Resource Type | Description |
-| - | - |
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azuread_application` | The Service Fabric cluster application |
-| `azuread_service_principal` | A Service Principal for the Service Fabric Client |
-| `azuread_service_principal` | A Service principal for the Service Fabric Cluster |
-| `azurerm_key_vault` |  |
-| `azurerm_key_vault_certificate` | The Cluster Management Certificate |
-| `azurerm_key_vault_certificate` | The Client App Certificate |
-| `azurerm_lb` | A load balancer that sits in from of the VMs |
-| `azurerm_public_ip` | A public IP for the cluster |
-| `azurerm_service_fabric_cluster` | The Service Fabric cluster |
-| `azurerm_storage_account` | A storage Account for the cluster  |
-| `azurerm_storage_account` | A Storage Account for the cluster VMs |
-| `azurerm_virtual_network` | A Virtual Network for the cluster Nodes |
-| `azurerm_subnet` | A Subnet for the cluster nodes |
-| `azurerm_subnet` | A Default subnet for other endpoints that may talk with the cluster | `azurerm_subnet` | A subnet for APIM endpoints |
-| `azurerm_virtual_machine_scale_set` | The actual cluster nodes |
-| `random_string` | The client certificate password |
-| `random_string` | The cluster certificate passwords |
-| `azurerm_api_management` | The APIM instnace |
-| `azurerm_application_insights` | Application Insights for APIM |
+| Terraform Resource Type             | Description                                                         |
+| ----------------------------------- | ------------------------------------------------------------------- | ---------------- | --------------------------- |
+| `azurerm_resource_group`            | The resource group all resources are deployed into                  |
+| `azuread_application`               | The Service Fabric cluster application                              |
+| `azuread_service_principal`         | A Service Principal for the Service Fabric Client                   |
+| `azuread_service_principal`         | A Service principal for the Service Fabric Cluster                  |
+| `azurerm_key_vault`                 |                                                                     |
+| `azurerm_key_vault_certificate`     | The Cluster Management Certificate                                  |
+| `azurerm_key_vault_certificate`     | The Client App Certificate                                          |
+| `azurerm_lb`                        | A load balancer that sits in from of the VMs                        |
+| `azurerm_public_ip`                 | A public IP for the cluster                                         |
+| `azurerm_service_fabric_cluster`    | The Service Fabric cluster                                          |
+| `azurerm_storage_account`           | A storage Account for the cluster                                   |
+| `azurerm_storage_account`           | A Storage Account for the cluster VMs                               |
+| `azurerm_virtual_network`           | A Virtual Network for the cluster Nodes                             |
+| `azurerm_subnet`                    | A Subnet for the cluster nodes                                      |
+| `azurerm_subnet`                    | A Default subnet for other endpoints that may talk with the cluster | `azurerm_subnet` | A subnet for APIM endpoints |
+| `azurerm_virtual_machine_scale_set` | The actual cluster nodes                                            |
+| `random_string`                     | The client certificate password                                     |
+| `random_string`                     | The cluster certificate passwords                                   |
+| `azurerm_api_management`            | The APIM instnace                                                   |
+| `azurerm_application_insights`      | Application Insights for APIM                                       |
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| `name` | Name of the deployment |
-| `environment` | The depolyment environment name (used for postfixing resource names) |
-| `environment_short` | A 3 or 4 letter string to represent the environment |
-| `dns_prefix` | A prefix for globally-unique dns-based resources |
-| `cluster_size` | How many nodes to deploy |
-| `admin_username` | The Administrator username for the nodes |
-| `admin_password` | The Administrator password for the nodes |
-| `client_object_id` | A pre-created Client for SF from AAD |
-| `api_publisher_name` | The listed APIM publisher name |
-| `api_publisher_email` | he listed APIM publisher email |
+| Name                  | Description                                                          |
+| --------------------- | -------------------------------------------------------------------- |
+| `name`                | Name of the deployment                                               |
+| `environment`         | The depolyment environment name (used for postfixing resource names) |
+| `environment_short`   | A 3 or 4 letter string to represent the environment                  |
+| `dns_prefix`          | A prefix for globally-unique dns-based resources                     |
+| `cluster_size`        | How many nodes to deploy                                             |
+| `admin_username`      | The Administrator username for the nodes                             |
+| `admin_password`      | The Administrator password for the nodes                             |
+| `client_object_id`    | A pre-created Client for SF from AAD                                 |
+| `api_publisher_name`  | The listed APIM publisher name                                       |
+| `api_publisher_email` | he listed APIM publisher email                                       |
 
 ## Notes
- - On first run you will have to add yourself to the access policy for keyvault as terraform has no way to know what your client ID is to create the policy dynamically unless you're running as a service principal (which I don't have currently configured to look for).  Just go to KeyVault, add an access policy for yourself, and run terraform apply again.
- - NOTE: Vnet support in terraform for APIm does not yet exist - this script creates the network but you must manually join it to the vnet after
- - Cert references between KeyVault and APIM are not automatic since the format is different.  Download client cert from keyvault and do the following to add a password to the key so you can import from the APIM portal:
-     ```
-     openssl pkcs12 -in mycert.pfx -out temp.pem
-     openssl pkcs12 -export -out mycert2.pfx -in temp.pem
+
+- On first run you will have to add yourself to the access policy for keyvault as terraform has no way to know what your client ID is to create the policy dynamically unless you're running as a service principal (which I don't have currently configured to look for). Just go to KeyVault, add an access policy for yourself, and run terraform apply again.
+- NOTE: Vnet support in terraform for APIm does not yet exist - this script creates the network but you must manually join it to the vnet after
+- Cert references between KeyVault and APIM are not automatic since the format is different. Download client cert from keyvault and do the following to add a password to the key so you can import from the APIM portal:
+  ```
+  openssl pkcs12 -in mycert.pfx -out temp.pem
+  openssl pkcs12 -export -out mycert2.pfx -in temp.pem
+  ```
 
 ## Example
 

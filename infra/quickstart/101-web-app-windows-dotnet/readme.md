@@ -1,19 +1,17 @@
 # Windows Web App for a .NET Application
 
-
 This template deploys an [Azure App Service](https://www.terraform.io/docs/providers/azurerm/r/app_service.html) running Windows configured for a .NET Framework 4.6.2 application.
 
 ## Variables
 
-| Name | Description |
-|-|-|
-| name | Name of the deployment |
+| Name        | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| name        | Name of the deployment                                               |
 | environment | The depolyment environment name (used for postfixing resource names) |
-| dns_prefix | A prefix for globally-unique dns-based resources |
-| location | The Azure Region to deploy these resources in |
-| plan_tier | The App Service Plan tier to deploy |
-| plan_sku | The App Service Plan SKU to deploy|
-
+| dns_prefix  | A prefix for globally-unique dns-based resources                     |
+| location    | The Azure Region to deploy these resources in                        |
+| plan_tier   | The App Service Plan tier to deploy                                  |
+| plan_sku    | The App Service Plan SKU to deploy                                   |
 
 ## Usage
 
@@ -197,3 +195,4 @@ Plan: 3 to add, 0 to change, 0 to destroy.
 
 ------------------------------------------------------------------------
 ``
+```

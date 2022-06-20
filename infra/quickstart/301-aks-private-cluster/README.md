@@ -7,37 +7,37 @@ custom DNS server.
 
 To use this template, ensure the following pre-requirements have been set:
 
-* Azure CLI and terraform installed locally
-* Pre-configure DNS servers outside of AKS VNet
-* Forward AKS cluster FQDN `azmk8s.io` (or only private cluster FQDN `privatelink.<region>.azmk8s.io`) to Azure DNS `168.63.129.16`
-* Get the DNS servers IP address, which would be set in `custom_dns`
-* Get the DNS server's VNet resource ID, which would be set in `custom_dns_vnet_id`
+- Azure CLI and terraform installed locally
+- Pre-configure DNS servers outside of AKS VNet
+- Forward AKS cluster FQDN `azmk8s.io` (or only private cluster FQDN `privatelink.<region>.azmk8s.io`) to Azure DNS `168.63.129.16`
+- Get the DNS servers IP address, which would be set in `custom_dns`
+- Get the DNS server's VNet resource ID, which would be set in `custom_dns_vnet_id`
 
 ## Resources
 
-| Terraform Resource Type | Description |
-|-------------------------|-------------|
-| `azurerm_resource_group` | The resource group all resources are deployed into |
-| `azurerm_virtual_network` | The VNet that AKS cluster would be deployed on |
-| `azurerm_subnet` | The subnet that AKS cluster would be deployed on |
-| `azurerm_kubernetes_cluster` | The AKS cluster |
-| `null_resource.dns_zone_link` | Link custom DNS server's VNet to AKS private DNS zone|
+| Terraform Resource Type       | Description                                           |
+| ----------------------------- | ----------------------------------------------------- |
+| `azurerm_resource_group`      | The resource group all resources are deployed into    |
+| `azurerm_virtual_network`     | The VNet that AKS cluster would be deployed on        |
+| `azurerm_subnet`              | The subnet that AKS cluster would be deployed on      |
+| `azurerm_kubernetes_cluster`  | The AKS cluster                                       |
+| `null_resource.dns_zone_link` | Link custom DNS server's VNet to AKS private DNS zone |
 
 ## Variables
 
-| Name | Description |
-|------|-------------|
-| `resource_group_name` | Name of the Azure resource group|
-| `cluster_name` | Name of the AKS cluster|
-| `custom_dns` | IP of custom DNS server|
-| `custom_dns_vnet_id` |Resource ID of the Azure VNet that holds custom DNS server|
-| `client_id` | The service principal ID|
-| `client_secret` | The service principal password|
-| `agent_count` | The number of K8S nodes to provision|
-| `kubernetes_version` | The version of K8S to provision|
-| `ssh_public_key` | The SSH public key of K8S nodes |
-| `dns_prefix` | The DNS prefix of AKS cluster |
-| `location`  | The location of Azure resources |
+| Name                  | Description                                                |
+| --------------------- | ---------------------------------------------------------- |
+| `resource_group_name` | Name of the Azure resource group                           |
+| `cluster_name`        | Name of the AKS cluster                                    |
+| `custom_dns`          | IP of custom DNS server                                    |
+| `custom_dns_vnet_id`  | Resource ID of the Azure VNet that holds custom DNS server |
+| `client_id`           | The service principal ID                                   |
+| `client_secret`       | The service principal password                             |
+| `agent_count`         | The number of K8S nodes to provision                       |
+| `kubernetes_version`  | The version of K8S to provision                            |
+| `ssh_public_key`      | The SSH public key of K8S nodes                            |
+| `dns_prefix`          | The DNS prefix of AKS cluster                              |
+| `location`            | The location of Azure resources                            |
 
 ## Usage
 
