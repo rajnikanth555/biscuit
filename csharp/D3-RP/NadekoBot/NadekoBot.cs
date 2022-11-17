@@ -39,7 +39,7 @@ namespace NadekoBot
         public static string BotMention { get; set; } = "";
         public static bool Ready { get; set; } = false;
         public static bool IsBot { get; set; } = false;
-
+        public static bool IsBot1 { get; set; } = false;
         private static Channel OwnerPrivateChannel { get; set; }
 
         private static void Main()
